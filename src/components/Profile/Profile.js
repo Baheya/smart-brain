@@ -13,7 +13,7 @@ const Profile = ({ isProfileOpen, toggleModal, user, loadUser }) => {
   };
 
   const onProfileUpdate = (data) => {
-    fetch(`${process.env.REACT_APP_API_URL}/profile/${data.id}`, {
+    fetch(`https://detecting-faces-api.herokuapp.com/profile/${data.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

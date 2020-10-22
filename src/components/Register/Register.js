@@ -23,7 +23,7 @@ class Register extends React.Component {
   };
 
   onSubmitSignIn = () => {
-    fetch(`${process.env.REACT_APP_API_URL}/register`, {
+    fetch(`https://detecting-faces-api.herokuapp.com/register`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

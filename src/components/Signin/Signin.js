@@ -23,7 +23,7 @@ class Signin extends React.Component {
 
   onSubmitSignIn = () => {
     console.log(process.env.REACT_APP_API_URL);
-    fetch(`${process.env.REACT_APP_API_URL}/signin`, {
+    fetch(`https://detecting-faces-api.herokuapp.com/signin`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -36,13 +36,16 @@ class Signin extends React.Component {
         if (data.userId && data.success === 'true') {
           console.log(data.token);
           this.saveAuthTokenInSession(data.token);
-          fetch(`${process.env.REACT_APP_API_URL}/profile/${data.userId}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: data.token,
-            },
-          })
+          fetch(
+            `https://detecting-faces-api.herokuapp.com/profile/${data.userId}`,
+            {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: data.token,
+              },
+            }
+          )
             .then((resp) => resp.json())
             .then((user) => {
               if (user && user.email) {
